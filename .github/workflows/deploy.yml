@@ -40,7 +40,6 @@ jobs:
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25.2.0
-        if: ${{ github.ref_name == 'feature/ALTO-363-remix-update' }}
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
