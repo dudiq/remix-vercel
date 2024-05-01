@@ -27,6 +27,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
 
+      - name: Install dependencies
+        run: |
+          cd ../..
+          pnpm install --frozen-lockfile --production=false
+          VERCEL_FORCE_NO_BUILD_CACHE=1
+
       - name: Build App
         run: |
           cd ../..
