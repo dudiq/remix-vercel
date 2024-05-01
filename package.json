@@ -15,7 +15,6 @@
     "db:push": "turbo run db:push",
     "db:seed": "turbo run db:seed --no-cache",
     "dev": "turbo run dev --parallel",
-    "vercel-build": "echo 'plug for vercel build'",
     "docker:build": "turbo run docker:build",
     "docker:build:remix-app": "docker build -t my-remix-latest-remix-app -f ./apps/remix-app/Dockerfile .",
     "docker:db": "docker compose -f docker-compose.yml up -d",

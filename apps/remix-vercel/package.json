@@ -4,6 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "vercel-build": "echo 'plug for vercel build'",
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "start": "remix-serve ./build/index.js",
