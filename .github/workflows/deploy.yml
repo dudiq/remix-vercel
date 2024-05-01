@@ -2,6 +2,7 @@ name: 🚀 CI
 on:
   push:
     branches:
+      - master
       - main
       - dev
   pull_request: {}
@@ -12,8 +13,6 @@ permissions:
 jobs:
   build:
     name: 🐳 Build
-    # only build/deploy main branch on pushes
-    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     defaults:
       run:
