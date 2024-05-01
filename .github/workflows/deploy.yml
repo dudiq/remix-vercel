@@ -38,6 +38,11 @@ jobs:
           cd ../..
           pnpm build
 
+      - name: Post-process release artifact
+        run: |
+          cd ../..
+          ls -al ./apps/remix-vercel/build
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25.2.0
         with:
