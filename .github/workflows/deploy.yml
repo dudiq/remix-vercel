@@ -14,39 +14,42 @@ jobs:
   build:
     name: 🐳 Build
     runs-on: ubuntu-latest
+    env:
+      CHECK_TEST: ${{ github.ref_name == 'master' && 'this-is-master' || 'other-branch' }}
     defaults:
       run:
         working-directory: ./apps/remix-vercel
     steps:
-      - name: 🛑 Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.12.0
+#      - name: 🛑 Cancel Previous Runs
+#        uses: styfle/cancel-workflow-action@0.12.0
 
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+#      - name: ⬇️ Checkout repo
+#        uses: actions/checkout@v4
+#
+#      - name: Setup pnpm
+#        uses: pnpm/action-setup@v2
 
       - name: Install dependencies
         run: |
+          echo $CHECK_TEST
           cd ../..
-          pnpm install --frozen-lockfile --production=false
-          VERCEL_FORCE_NO_BUILD_CACHE=1
+#          pnpm install --frozen-lockfile --production=false
+#          VERCEL_FORCE_NO_BUILD_CACHE=1
 
-      - name: Build App
-        run: |
-          cd ../..
-          pnpm build
-
-      - name: Post-process release artifact
-        run: |
-          cd ../..
-          ls -al ./apps/remix-vercel/build
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25.2.0
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-version: '33.7.1'
+#      - name: Build App
+#        run: |
+#          cd ../..
+#          pnpm build
+#
+#      - name: Post-process release artifact
+#        run: |
+#          cd ../..
+#          ls -al ./apps/remix-vercel/build
+#
+#      - name: Deploy to Vercel
+#        uses: amondnet/vercel-action@v25.2.0
+#        with:
+#          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+#          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+#          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+#          vercel-version: '33.7.1'
