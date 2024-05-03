@@ -5,6 +5,7 @@ on:
       - master
       - main
       - dev
+      - check-env
   pull_request: {}
 permissions:
   actions: write
